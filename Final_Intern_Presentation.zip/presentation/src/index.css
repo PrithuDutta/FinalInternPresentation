@@ -1,33 +1,42 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
-
 @import "tailwindcss";
 
 :root {
-  --navy:      #0d1117;
-  --navy-mid:  #0f1e3c;
-  --blue:      #0f62fe;
-  --blue-lt:   #4589ff;
-  --blue-bg:   #edf4ff;
-  --blue-bd:   #c1d7ff;
-  --slide-bg:  #f2f4f8;
-  --text:      #161616;
-  --muted:     #525252;
-  --faint:     #8d8d8d;
-  --border:    #dde1e7;
-  --soft:      #f4f6fb;
-  --green:     #198038;
-  --green-bg:  #defbe6;
-  --green-bd:  #a7f0ba;
-  --gold:      #b28600;
-  --gold-bg:   #fdf4d6;
-  --gold-bd:   #f5d773;
-  --purple:    #6929c4;
+  /* IBM Corporate Official Light Palette */
+  --ibm-blue-60: #0f62fe;
+  --ibm-blue-70: #0043ce;
+  --ibm-blue-80: #002d9c;
+  --ibm-blue-10: #edf5ff;
+  --ibm-blue-20: #d0e2ff;
+  --ibm-blue-30: #a6c8ff;
+  
+  --ibm-gray-100: #161616;
+  --ibm-gray-90:  #262626;
+  --ibm-gray-80:  #393939;
+  --ibm-gray-70:  #525252;
+  --ibm-gray-60:  #6f6f6f;
+  --ibm-gray-50:  #8d8d8d;
+  --ibm-gray-30:  #e0e0e0;
+  --ibm-gray-20:  #ececec;
+  --ibm-gray-10:  #f4f4f4;
+  --ibm-white:    #ffffff;
+
+  --ibm-green-60: #198038;
+  --ibm-green-10: #defbe6;
+  --ibm-green-30: #6fdc8c;
+
+  --ibm-red-60:   #da1e28;
+  --ibm-red-10:   #fff1f1;
+  --ibm-red-30:   #ff8389;
+
+  --ibm-yellow-30: #f1c21b;
+  --ibm-yellow-10: #fdf4d6;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  border-radius: 0px !important; /* Strict sharp geometry requested */
 }
 
 html,
@@ -38,11 +47,68 @@ body,
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: "IBM Plex Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
-  background: #0a0c10;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #e8e8e8;
+  color: #161616;
 }
 
-code,
+/* IBM Plex Typography */
 .font-mono {
-  font-family: "IBM Plex Mono", "Consolas", monospace;
+  font-family: "IBM Plex Mono", Consolas, "Courier New", monospace;
 }
+
+.font-sans {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* IBM 8-Bar Corporate Stripe Accent */
+.ibm-stripes {
+  background: repeating-linear-gradient(
+    to bottom,
+    #0f62fe,
+    #0f62fe 2px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+.ibm-stripes-dark {
+  background: repeating-linear-gradient(
+    to bottom,
+    #161616,
+    #161616 2px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+/* Custom Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+::-webkit-scrollbar-thumb {
+  background: #c6c6c6;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0f62fe;
+}
+
+/* Slide Container Aspect Ratio Handling */
+.slide-canvas {
+  aspect-ratio: 16 / 9;
+  max-width: calc((100vh - 110px) * 16 / 9);
+  max-height: calc(100vh - 110px);
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .slide-canvas {
+    max-width: calc(100vw - 32px);
+    max-height: calc((100vw - 32px) * 9 / 16);
+  }
+}
+
+

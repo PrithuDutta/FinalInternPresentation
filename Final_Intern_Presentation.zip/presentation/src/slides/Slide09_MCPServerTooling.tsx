@@ -2,22 +2,22 @@ import { Badge } from '../components/Badge';
 
 const MCP_PILLARS = [
   {
-    title: '1. Python Web Crawler',
+    title: '1. Python / BS4 Web Scraper',
     tech: 'Python · BeautifulSoup4',
-    desc: 'Targeted IBM Liberty official documentation. Scraped and parsed over 1,200+ CWWK, CNTR, J2CA, and DSRA runtime diagnostic codes.',
-    badge: '1,200+ Codes',
+    desc: 'Targeted official Open Liberty documentation. Parsed 1,300+ runtime error codes (CWWK, CNTR, J2CA) and thousands of server property configuration files.',
+    badge: '1,300+ Codes & Configs',
   },
   {
     title: '2. Structured SQLite Store',
     tech: 'SQLite · Relational DB',
-    desc: 'Normalized error metadata: error code, severity level (INFO/WARN/ERROR), subsystem component, error description, and actionable remediation.',
+    desc: 'Normalized error metadata into local SQLite store: error code, severity level (INFO/WARN/ERROR), subsystem component, description, and remediation XML.',
     badge: 'Sub-ms Query',
   },
   {
     title: '3. Model Context Protocol',
-    tech: 'MCP Protocol · JSON-RPC',
-    desc: 'Exposed live MCP tool endpoints allowing WatsonX and Bob AI to query Liberty runtime codes dynamically and ground their code changes in real IBM docs.',
-    badge: 'Live MCP Tool',
+    tech: 'MCP Server · JSON-RPC',
+    desc: 'Integrated with internal AI assistant via live MCP tool endpoints to deliver sub-second, natural-language server diagnostics during autonomous migration.',
+    badge: 'Internal AI Assistant',
   },
 ];
 
@@ -35,8 +35,9 @@ export function Slide09_MCPServerTooling() {
           </h2>
         </div>
         <div className="flex items-center gap-2">
-          <Badge label="WatsonX Intern Challenge" variant="dark" size="sm" />
-          <Badge label="MCP Protocol" variant="blue" size="sm" />
+          <Badge label="WatsonX Challenge" variant="dark" size="sm" />
+          <Badge label="1,300+ Codes Indexed" variant="blue" size="sm" />
+          <Badge label="Sub-Second Latency" variant="green" size="sm" />
         </div>
       </div>
 
@@ -64,20 +65,21 @@ export function Slide09_MCPServerTooling() {
       {/* Interactive Terminal Snippet */}
       <div className="p-3 bg-[#f4f4f4] border border-[#e0e0e0] font-mono text-[0.68rem] space-y-1">
         <div className="flex items-center justify-between text-[0.6rem] text-[#525252] pb-1 border-b border-[#e0e0e0]">
-          <span>MCP PROTOCOL TOOL CALL // WATSONX AGENT CONSOLE</span>
-          <span className="text-[#198038] font-bold">RESPONSE STATUS: 200 OK</span>
+          <span>INTERNAL AI ASSISTANT // MCP SERVER DIAGNOSTIC CONSOLE</span>
+          <span className="text-[#198038] font-bold">QUERY LATENCY: 12ms [200 OK]</span>
         </div>
         <div className="text-[#0f62fe]">
-          &gt; query_mcp(tool="get_cwwk_error", args=&#123;"code": "CWWKC2271E"&#125;)
+          &gt; query_mcp(tool="diagnose_liberty_error", prompt="Login failing with tradehome.jsp NPE after Liberty container boot")
         </div>
         <div className="text-[#198038] pl-2">
-          &lt; &#123;"error": "Missing JMS Messaging Client", "solution": "Add &lt;feature&gt;messagingClient-3.0&lt;/feature&gt; to server.xml"&#125;
+          &lt; &#123;"matched_code": "CWWKC2271E", "component": "JMS Client", "remediation": "Add &lt;feature&gt;messagingClient-3.0&lt;/feature&gt; to server.xml"&#125;
         </div>
         <div className="text-[#525252] text-[0.62rem] pt-1">
-          Grounds LLM code modifications in authoritative Liberty runtime error resolutions.
+          Provides sub-second natural language server diagnostics grounded in 1,300+ Open Liberty codes and property configs.
         </div>
       </div>
     </div>
   );
 }
+
 

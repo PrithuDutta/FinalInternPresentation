@@ -15,73 +15,67 @@ export function Nav({
   onPrev,
   onNext,
   onGoTo,
-  onToggleFullscreen,
 }: NavProps) {
-  const progressPercent = ((current + 1) / total) * 100;
-
   return (
-    <footer className="w-full h-12 bg-white border-t border-[#e0e0e0] px-6 flex items-center justify-between shrink-0 select-none z-30 relative">
-      {/* Top progress line */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#f4f4f4]">
-        <div
-          className="h-full bg-[#0f62fe] transition-all duration-200 ease-out"
-          style={{ width: `${progressPercent}%` }}
-        />
+    <footer className="statusbar-2010 h-7 px-3 flex items-center justify-between shrink-0 select-none z-30">
+      {/* Left: 2010s Enterprise System Status */}
+      <div className="flex items-center gap-3 text-[10.5px]">
+        <div className="flex items-center gap-1">
+          <span className="w-2 h-2 rounded-full bg-[#198038] border border-[#0e5c24]" />
+          <span className="font-semibold text-[#1e293b]">SVT Cluster:</span>
+          <span className="font-mono text-[#475569]">ONLINE (svt-rhel-node01)</span>
+        </div>
+        <span className="text-[#cbd5e1]">|</span>
+        <div className="hidden md:flex items-center gap-1">
+          <span className="font-semibold text-[#1e293b]">Target:</span>
+          <span className="font-mono text-[#475569]">Liberty Java 21 / Jakarta 11</span>
+        </div>
+        <span className="text-[#cbd5e1] hidden md:inline">|</span>
+        <div className="hidden lg:flex items-center gap-1">
+          <span className="font-semibold text-[#1e293b]">DB2:</span>
+          <span className="font-mono text-[#475569]">svtdb:50000 (TRADEDB)</span>
+        </div>
       </div>
 
-      {/* Prev button */}
-      <button
-        onClick={onPrev}
-        disabled={current === 0}
-        className="flex items-center gap-2 px-3 py-1.5 text-[0.72rem] font-mono font-semibold text-[#161616] bg-[#f4f4f4] hover:bg-[#e0e0e0] border border-[#e0e0e0] transition-colors disabled:opacity-30 disabled:pointer-events-none"
-        title="Previous Slide (Arrow Left)"
-      >
-        <span>←</span>
-        <span>PREV</span>
-      </button>
-
-      {/* Slide Navigation Numbered Matrix */}
-      <div className="flex items-center gap-1 overflow-x-auto py-1">
-        {Array.from({ length: total }).map((_, i) => {
-          const isActive = i === current;
-          return (
-            <button
-              key={i}
-              onClick={() => onGoTo(i)}
-              className={`h-7 px-2.5 flex items-center justify-center font-mono text-[0.68rem] transition-colors ${
-                isActive
-                  ? 'bg-[#0f62fe] text-white font-bold'
-                  : 'bg-[#f4f4f4] text-[#525252] hover:text-[#161616] hover:bg-[#e0e0e0] border border-[#e0e0e0]'
-              }`}
-              title={`Slide ${i + 1}: ${slideTitles[i]}`}
-            >
-              {(i + 1).toString().padStart(2, '0')}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Right controls: Next button + Fullscreen */}
-      <div className="flex items-center gap-2">
+      {/* Center / Right: 2010s Segmented Slide Jump Bar & Controls */}
+      <div className="flex items-center gap-1.5">
         <button
-          onClick={onToggleFullscreen}
-          className="px-2 py-1.5 text-[#525252] hover:text-[#161616] bg-[#f4f4f4] hover:bg-[#e0e0e0] border border-[#e0e0e0] transition-colors text-[0.68rem] font-mono"
-          title="Toggle Fullscreen (F)"
+          onClick={onPrev}
+          disabled={current === 0}
+          className="btn-2010-default px-2 py-0.5 text-[10.5px] disabled:opacity-40 disabled:pointer-events-none"
+          title="Previous Slide (Arrow Left)"
         >
-          [F]
+          ◄ Prev
         </button>
+
+        {/* Numbered Jump Buttons */}
+        <div className="flex items-center gap-0.5">
+          {Array.from({ length: total }).map((_, i) => {
+            const isActive = i === current;
+            return (
+              <button
+                key={i}
+                onClick={() => onGoTo(i)}
+                className={`px-1.5 py-0.5 text-[10px] font-mono ${
+                  isActive ? 'btn-2010-primary' : 'btn-2010-default'
+                }`}
+                title={`Slide ${i + 1}: ${slideTitles[i]}`}
+              >
+                {i + 1}
+              </button>
+            );
+          })}
+        </div>
 
         <button
           onClick={onNext}
           disabled={current === total - 1}
-          className="flex items-center gap-2 px-4 py-1.5 text-[0.72rem] font-mono font-bold text-white bg-[#0f62fe] hover:bg-[#0043ce] transition-colors disabled:opacity-30 disabled:pointer-events-none"
+          className="btn-2010-primary px-2.5 py-0.5 text-[10.5px] disabled:opacity-40 disabled:pointer-events-none"
           title="Next Slide (Space / Arrow Right)"
         >
-          <span>NEXT</span>
-          <span>→</span>
+          Next ►
         </button>
       </div>
     </footer>
   );
 }
-

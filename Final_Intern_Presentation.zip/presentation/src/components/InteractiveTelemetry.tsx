@@ -25,305 +25,317 @@ export function InteractiveTelemetry({ isOpen, onClose }: InteractiveTelemetryPr
 
   // ROI Calculator Math
   const blindHoursPerApp = 35;
-  const ppHoursPerApp = 0.9; // 54 min
+  const ppHoursPerApp = 0.9;
   const hoursSaved = (blindHoursPerApp - ppHoursPerApp) * portfolioSize;
-  const blindCoins = 90 * portfolioSize;
+  const blindCoins = 27 * portfolioSize;
   const ppCoins = 18 * portfolioSize;
   const coinsSaved = blindCoins - ppCoins;
-  const dollarSaved = hoursSaved * 120; // $120/hr enterprise dev cost
+  const dollarSaved = hoursSaved * 120;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="w-full max-w-5xl h-[85vh] bg-white border border-[#c6c6c6] shadow-2xl flex flex-col overflow-hidden select-text">
-        {/* Modal Header */}
-        <div className="h-12 bg-[#f4f4f4] border-b border-[#e0e0e0] px-6 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-2.5 h-2.5 bg-[#0f62fe]" />
-            <span className="font-mono font-bold text-xs tracking-wider text-[#161616] uppercase">
-              IBM SVT // DIAGNOSTIC & TELEMETRY MODULE
+      <div className="w-full max-w-5xl h-[85vh] bg-[#f8f9fa] border border-[#718096] rounded-[4px] shadow-2xl flex flex-col overflow-hidden select-text font-sans">
+        {/* Classic 2010s Window Titlebar */}
+        <div className="panel-2010-heading-blue h-10 px-4 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-2.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#60a5fa] border border-[#2563eb]" />
+            <span className="font-bold text-[12.5px] tracking-wide text-white drop-shadow-sm">
+              IBM WebSphere Application Server // Diagnostic Telemetry &amp; MCP Console
             </span>
           </div>
 
-          {/* Tabs */}
-          <div className="flex items-center gap-1 font-mono text-xs">
+          {/* 2010s Segmented Window Tabs */}
+          <div className="flex items-center gap-1">
             <button
               onClick={() => setActiveTab('mcp')}
-              className={`px-3 py-1.5 transition-colors ${
-                activeTab === 'mcp'
-                  ? 'bg-[#0f62fe] text-white font-bold'
-                  : 'bg-white text-[#525252] hover:text-[#161616] border border-[#e0e0e0]'
+              className={`px-2.5 py-0.5 text-[11px] ${
+                activeTab === 'mcp' ? 'btn-2010-primary' : 'btn-2010-default'
               }`}
             >
               1. CWWK MCP Server
             </button>
             <button
               onClick={() => setActiveTab('topology')}
-              className={`px-3 py-1.5 transition-colors ${
-                activeTab === 'topology'
-                  ? 'bg-[#0f62fe] text-white font-bold'
-                  : 'bg-white text-[#525252] hover:text-[#161616] border border-[#e0e0e0]'
+              className={`px-2.5 py-0.5 text-[11px] ${
+                activeTab === 'topology' ? 'btn-2010-primary' : 'btn-2010-default'
               }`}
             >
               2. SIBus Topology
             </button>
             <button
               onClick={() => setActiveTab('diffs')}
-              className={`px-3 py-1.5 transition-colors ${
-                activeTab === 'diffs'
-                  ? 'bg-[#0f62fe] text-white font-bold'
-                  : 'bg-white text-[#525252] hover:text-[#161616] border border-[#e0e0e0]'
+              className={`px-2.5 py-0.5 text-[11px] ${
+                activeTab === 'diffs' ? 'btn-2010-primary' : 'btn-2010-default'
               }`}
             >
               3. server.xml Diffs
             </button>
             <button
               onClick={() => setActiveTab('calculator')}
-              className={`px-3 py-1.5 transition-colors ${
-                activeTab === 'calculator'
-                  ? 'bg-[#0f62fe] text-white font-bold'
-                  : 'bg-white text-[#525252] hover:text-[#161616] border border-[#e0e0e0]'
+              className={`px-2.5 py-0.5 text-[11px] ${
+                activeTab === 'calculator' ? 'btn-2010-primary' : 'btn-2010-default'
               }`}
             >
-              4. ROI Calculator
+              4. 33% ROI Calculator
             </button>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1 text-[#525252] hover:text-[#161616] hover:bg-[#e0e0e0] text-xs font-mono"
+            className="btn-2010-default px-2 py-0.5 text-[11px] font-bold text-[#111111]"
             title="Close [Esc]"
           >
-            ✕
+            ✕ Close
           </button>
         </div>
 
-        {/* Modal Body */}
-        <div className="flex-1 overflow-y-auto p-6 bg-white">
-          {/* TAB 1: CWWK MCP SERVER SIMULATOR */}
+        {/* Window Body */}
+        <div className="flex-1 overflow-y-auto p-4 bg-[#fbfcfd]">
+          {/* TAB 1: CWWK MCP SERVER */}
           {activeTab === 'mcp' && (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between border-b border-[#e0e0e0] pb-3">
+            <div className="space-y-3">
+              <div className="callout-2010-info flex items-center justify-between">
                 <div>
-                  <h4 className="text-sm font-bold text-[#161616]">
-                    Liberty Diagnostic Knowledge Base (MCP Protocol Endpoint)
+                  <h4 className="font-bold text-[12px] text-[#004480]">
+                    Open Liberty CWWK* &amp; CNTR* Diagnostic MCP Server
                   </h4>
-                  <p className="text-xs text-[#525252]">
-                    Structured database queried by Bob AI and WatsonX to ground runtime code refactorings.
+                  <p className="text-[11px] text-[#334155]">
+                    1,300+ diagnostic error codes scraped and indexed into SQLite database (<code className="font-mono bg-white px-1 border border-[#bce8f1]">liberty_errors.sqlite</code>) with real-time MCP protocol endpoint.
                   </p>
                 </div>
-                <div className="w-72">
-                  <input
-                    type="text"
-                    placeholder="Search error code (e.g. CNTR, CWWK, J2CA)..."
-                    value={searchQuery}
-                    onChange={e => setSearchQuery(e.target.value)}
-                    className="w-full px-3 py-1.5 bg-[#f4f4f4] border border-[#c6c6c6] text-[#161616] text-xs font-mono placeholder:text-[#8d8d8d] focus:outline-none focus:border-[#0f62fe]"
-                  />
+                <div className="font-mono text-[10px] font-bold px-2 py-1 bg-white border border-[#bce8f1] text-[#0066cc] rounded-[3px]">
+                  STATUS: MCP ACTIVE (PORT 8000)
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {filteredCodes.map(item => (
-                  <div
-                    key={item.code}
-                    className="p-3 bg-[#f4f4f4] border border-[#e0e0e0] space-y-2 hover:border-[#0f62fe] transition-colors"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-bold text-[#0f62fe]">
-                          {item.code}
-                        </span>
+              {/* 2010s Search Toolbar */}
+              <div className="p-2.5 bg-[#edf2f7] border border-[#cbd5e1] rounded-[3px] flex items-center gap-2">
+                <span className="text-[11px] font-bold text-[#334155]">Search Codes / Symptoms:</span>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  placeholder="e.g. CNTR0154E, CWWKC2271E, J2CA0027E, JMS, EJB..."
+                  className="flex-1 px-2.5 py-1 text-[11.5px] font-mono bg-white border border-[#94a3b8] rounded-[2px] focus:outline-none focus:border-[#0066cc]"
+                />
+                <span className="text-[10.5px] font-mono text-[#64748b]">
+                  Showing {filteredCodes.length} of {CWWK_CODES.length} samples (1,300+ indexed)
+                </span>
+              </div>
+
+              {/* Results Table */}
+              <table className="table-2010">
+                <thead>
+                  <tr>
+                    <th className="w-[12%]">Error Code</th>
+                    <th className="w-[10%]">Severity</th>
+                    <th className="w-[16%]">Subsystem</th>
+                    <th className="w-[30%]">Runtime Symptom</th>
+                    <th className="w-[32%]">Remediation XML / Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredCodes.map(c => (
+                    <tr key={c.code}>
+                      <td className="font-mono font-bold text-[#0066cc]">{c.code}</td>
+                      <td>
                         <span
-                          className={`text-[0.6rem] px-1.5 py-0.5 font-mono font-bold ${
-                            item.severity === 'ERROR'
-                              ? 'bg-[#fff1f1] text-[#da1e28] border border-[#ff8389]'
-                              : 'bg-[#defbe6] text-[#198038] border border-[#6fdc8c]'
+                          className={`badge-2010 ${
+                            c.severity === 'ERROR'
+                              ? 'badge-2010-red'
+                              : c.severity === 'WARNING'
+                              ? 'badge-2010-yellow'
+                              : 'badge-2010-blue'
                           }`}
                         >
-                          {item.severity}
+                          {c.severity}
                         </span>
-                      </div>
-                      <span className="text-[0.65rem] font-mono text-[#525252]">
-                        {item.component}
-                      </span>
-                    </div>
-
-                    <div className="text-xs font-semibold text-[#161616]">{item.title}</div>
-                    <div className="text-[0.72rem] text-[#161616] font-mono bg-white p-2 border border-[#e0e0e0]">
-                      {item.description}
-                    </div>
-
-                    <div className="text-[0.72rem] text-[#198038] bg-[#defbe6] p-2 border border-[#6fdc8c]">
-                      <span className="font-bold">MCP Remediation: </span>
-                      {item.solution}
-                    </div>
-                  </div>
-                ))}
-              </div>
+                      </td>
+                      <td className="font-semibold text-[#334155]">{c.component}</td>
+                      <td className="text-[11px] leading-relaxed text-[#222222]">{c.description}</td>
+                      <td className="text-[11px] font-mono text-[#005599] leading-relaxed bg-[#f8fafc]">
+                        {c.solution}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
 
-          {/* TAB 2: SIBUS ARCHITECTURE TOPOLOGY */}
+          {/* TAB 2: SIBUS TOPOLOGY */}
           {activeTab === 'topology' && (
-            <div className="space-y-6">
-              <div className="border-b border-[#e0e0e0] pb-3">
-                <h4 className="text-sm font-bold text-[#161616]">
-                  DayTrader 7 Enterprise Topology (tWAS & OpenLiberty)
+            <div className="space-y-3">
+              <div className="callout-2010-info">
+                <h4 className="font-bold text-[12px] text-[#004480]">
+                  3-Tier Request Lifecycle &amp; WebSphere SIBus Architecture
                 </h4>
-                <p className="text-xs text-[#525252]">
-                  Container messaging, EJB transaction boundaries, and DB2 connection pooling.
+                <p className="text-[11px] text-[#334155]">
+                  Request lifecycle tracing isolating the root cause behind login &amp; messaging failures on WebSphere Liberty.
                 </p>
               </div>
 
-              {/* Visual Block Topology */}
-              <div className="grid grid-cols-5 gap-3 font-mono text-xs text-center">
-                <div className="p-4 bg-[#f4f4f4] border border-[#e0e0e0] flex flex-col justify-center items-center">
-                  <div className="text-[#0f62fe] font-bold mb-1">[ Web Tier ]</div>
-                  <div className="text-[0.7rem] text-[#161616]">JSP & Servlets</div>
-                  <div className="text-[0.6rem] text-[#525252] mt-1">HTTP /:9080</div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="panel-2010">
+                  <div className="panel-2010-heading">
+                    TIER 1: WEB PRESENTATION (JSP/SERVLET)
+                  </div>
+                  <div className="panel-2010-body space-y-1.5 text-[11px]">
+                    <div className="p-1.5 bg-[#f8fafc] border border-[#e2e8f0] font-mono text-[10.5px]">
+                      TradeServletAction.doLogin()
+                    </div>
+                    <p className="text-[#555555]">
+                      Receives HTTP login credentials, performs initial validation, and dispatches to business facade layer.
+                    </p>
+                    <div className="badge-2010 badge-2010-blue">Servlet 6.0 Container</div>
+                  </div>
                 </div>
 
-                <div className="flex items-center justify-center text-[#0f62fe] text-lg font-bold">
-                  ──► CDI ──►
+                <div className="panel-2010">
+                  <div className="panel-2010-heading">
+                    TIER 2: BUSINESS LOGIC FACADE (CDI)
+                  </div>
+                  <div className="panel-2010-body space-y-1.5 text-[11px]">
+                    <div className="p-1.5 bg-[#f8fafc] border border-[#e2e8f0] font-mono text-[10.5px]">
+                      TradeAction.login()
+                    </div>
+                    <p className="text-[#555555]">
+                      CDI-managed application facade orchestrating trade account verification and persistence lookups.
+                    </p>
+                    <div className="badge-2010 badge-2010-blue">CDI 4.0 Injection</div>
+                  </div>
                 </div>
 
-                <div className="p-4 bg-[#edf5ff] border border-[#a6c8ff] flex flex-col justify-center items-center">
-                  <div className="text-[#0f62fe] font-bold mb-1">[ EJB Container ]</div>
-                  <div className="text-[0.7rem] text-[#161616] font-semibold">TradeSLSBBean</div>
-                  <div className="text-[0.6rem] text-[#198038] mt-1">Stateless Session</div>
+                <div className="panel-2010">
+                  <div className="panel-2010-heading" style={{ color: '#c62828' }}>
+                    TIER 3: EJB CONTAINER &amp; SIBUS JMS
+                  </div>
+                  <div className="panel-2010-body space-y-1.5 text-[11px]">
+                    <div className="p-1.5 bg-[#ffebee] border border-[#ffcdd2] font-mono text-[10.5px] text-[#c62828] font-bold">
+                      TradeSLSBBean.login()
+                    </div>
+                    <p className="text-[#555555]">
+                      Stateless Session Bean with 4 class-level <code className="font-mono">@Resource</code> JMS injections. Container interceptor failed due to missing <code className="font-mono text-[#0066cc]">messagingClient-3.0</code> feature.
+                    </p>
+                    <div className="badge-2010 badge-2010-red">Root Cause Isolated</div>
+                  </div>
                 </div>
-
-                <div className="flex items-center justify-center text-[#0f62fe] text-lg font-bold">
-                  ──► JMS ──►
-                </div>
-
-                <div className="p-4 bg-[#f4f4f4] border border-[#e0e0e0] flex flex-col justify-center items-center">
-                  <div className="text-[#161616] font-bold mb-1">[ SIBus / MDB ]</div>
-                  <div className="text-[0.7rem] text-[#161616]">TradeBrokerQueue</div>
-                  <div className="text-[0.6rem] text-[#525252] mt-1">eis/TradeBrokerMDB</div>
-                </div>
-              </div>
-
-              <div className="p-4 bg-[#edf5ff] border border-[#a6c8ff] space-y-2">
-                <div className="text-xs font-mono font-bold text-[#0f62fe] uppercase">
-                  CONTAINER DEPENDENCY INSIGHT
-                </div>
-                <p className="text-xs text-[#161616] leading-relaxed">
-                  When migrating from tWAS to Liberty, the EJB container performs JNDI resolution of all injected <code className="text-[#0f62fe] font-mono">@Resource QueueConnectionFactory</code> references. If <code className="text-[#0f62fe] font-mono">&lt;feature&gt;messagingClient-3.0&lt;/feature&gt;</code> is absent from <code className="text-[#0f62fe] font-mono">server.xml</code>, bean initialization fails silently, setting the injected bean proxy to <code className="text-[#da1e28] font-mono">null</code>.
-                </p>
               </div>
             </div>
           )}
 
-          {/* TAB 3: CONFIG DIFFS */}
+          {/* TAB 3: SERVER.XML DIFFS */}
           {activeTab === 'diffs' && (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between border-b border-[#e0e0e0] pb-3">
-                <div>
-                  <h4 className="text-sm font-bold text-[#161616]">
-                    Runtime Configuration Diff Inspector
-                  </h4>
-                  <p className="text-xs text-[#525252]">
-                    Comparing Bob AI generated configs against final verified production configs.
-                  </p>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="text-[12px] font-bold text-[#1e293b]">
+                  Select Configuration Artifact:
                 </div>
-                <div className="flex gap-2">
+                <div className="flex items-center gap-1">
                   {CONFIG_DIFFS.map((diff, idx) => (
                     <button
                       key={diff.file}
                       onClick={() => setSelectedDiffIndex(idx)}
-                      className={`px-3 py-1 text-xs font-mono ${
-                        selectedDiffIndex === idx
-                          ? 'bg-[#0f62fe] text-white font-bold'
-                          : 'bg-[#f4f4f4] text-[#161616] border border-[#e0e0e0]'
+                      className={`px-2.5 py-0.5 text-[11px] ${
+                        selectedDiffIndex === idx ? 'btn-2010-primary' : 'btn-2010-default'
                       }`}
                     >
-                      {diff.file.split(' ')[0]}
+                      {diff.file}
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <div className="text-xs font-mono font-bold text-[#da1e28] mb-1">
-                    ▲ BEFORE (AI Model Incomplete Config)
+              <div className="callout-2010-info text-[11px]">
+                <strong className="text-[#004480]">Context: </strong>
+                {CONFIG_DIFFS[selectedDiffIndex].context}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="panel-2010">
+                  <div className="panel-2010-heading" style={{ color: '#b94a48' }}>
+                    ▲ FAILING AI-GENERATED CONFIGURATION
                   </div>
-                  <pre className="p-3 bg-[#fff1f1] border border-[#ff8389] text-[0.7rem] text-[#da1e28] font-mono overflow-x-auto whitespace-pre-wrap">
+                  <pre className="code-box-2010 text-[10px] text-[#b94a48] m-0 border-0 rounded-none bg-[#fffafa]">
                     {CONFIG_DIFFS[selectedDiffIndex].legacyCode}
                   </pre>
                 </div>
 
-                <div>
-                  <div className="text-xs font-mono font-bold text-[#198038] mb-1">
-                    ▼ AFTER (Verified Production Deployment)
+                <div className="panel-2010">
+                  <div className="panel-2010-heading" style={{ color: '#2e7d32' }}>
+                    ▼ VERIFIED CLOUD-NATIVE RESOLUTION (JAKARTA 11)
                   </div>
-                  <pre className="p-3 bg-[#defbe6] border border-[#6fdc8c] text-[0.7rem] text-[#198038] font-mono overflow-x-auto whitespace-pre-wrap">
+                  <pre className="code-box-2010 text-[10px] text-[#2e7d32] m-0 border-0 rounded-none bg-[#f8fdf9]">
                     {CONFIG_DIFFS[selectedDiffIndex].modernCode}
                   </pre>
                 </div>
               </div>
 
-              <div className="p-3 bg-[#edf5ff] border border-[#a6c8ff] text-xs text-[#161616]">
-                <span className="font-bold text-[#0f62fe]">Root Cause & Fix: </span>
+              <div className="callout-2010-success text-[11px]">
+                <strong className="text-[#2e7d32]">Root Cause Explanation: </strong>
                 {CONFIG_DIFFS[selectedDiffIndex].explanation}
               </div>
             </div>
           )}
 
-          {/* TAB 4: ROI CALCULATOR */}
+          {/* TAB 4: 33% ROI CALCULATOR */}
           {activeTab === 'calculator' && (
-            <div className="space-y-6 max-w-2xl mx-auto py-2">
-              <div className="text-center border-b border-[#e0e0e0] pb-3">
-                <h4 className="text-base font-bold text-[#161616]">
-                  Enterprise Modernization ROI Simulator
+            <div className="space-y-3">
+              <div className="callout-2010-info">
+                <h4 className="font-bold text-[12px] text-[#004480]">
+                  Portfolio-Scale AI Modernization Unit Economics Calculator
                 </h4>
-                <p className="text-xs text-[#525252]">
-                  Projecting Bob Premium Package time & token savings across enterprise application portfolios.
+                <p className="text-[11px] text-[#334155]">
+                  Calculates token burn reduction and developer time savings based on our empirical 33% token-cost reduction (27 Bob coins down to 18 coins).
                 </p>
               </div>
 
-              <div className="p-4 bg-[#f4f4f4] border border-[#e0e0e0] space-y-4">
-                <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-[#161616] font-semibold">Portfolio Application Count:</span>
-                  <span className="text-base font-bold text-[#0f62fe]">
-                    {portfolioSize} Applications
-                  </span>
-                </div>
+              <div className="p-3 bg-[#f1f5f9] border border-[#cbd5e1] rounded-[3px] flex items-center gap-3">
+                <span className="font-bold text-[11.5px] text-[#1e293b]">Enterprise Application Portfolio Size:</span>
                 <input
                   type="range"
-                  min="5"
-                  max="300"
-                  step="5"
+                  min="1"
+                  max="200"
                   value={portfolioSize}
                   onChange={e => setPortfolioSize(Number(e.target.value))}
-                  className="w-full accent-[#0f62fe]"
+                  className="flex-1"
                 />
+                <span className="font-mono font-bold text-sm text-[#0066cc] bg-white px-2 py-0.5 border border-[#cbd5e1] rounded-[2px]">
+                  {portfolioSize} Applications
+                </span>
               </div>
 
-              <div className="grid grid-cols-3 gap-4 text-center font-mono">
-                <div className="p-4 bg-[#f4f4f4] border border-[#e0e0e0]">
-                  <div className="text-xs text-[#525252] uppercase font-semibold">Dev Time Saved</div>
-                  <div className="text-2xl font-bold text-[#198038] my-1">
-                    {hoursSaved.toLocaleString()} hrs
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 text-center">
+                <div className="panel-2010 p-2.5">
+                  <div className="text-[10px] font-bold text-[#475569] uppercase">Standard Bob Burn</div>
+                  <div className="text-base font-bold font-mono text-[#c62828] mt-1">
+                    {blindCoins.toLocaleString()} Coins
                   </div>
-                  <div className="text-[0.65rem] text-[#8d8d8d]">~{(hoursSaved / 160).toFixed(1)} Man-Months</div>
+                  <div className="text-[9.5px] text-[#64748b]">27 coins / app</div>
                 </div>
 
-                <div className="p-4 bg-[#f4f4f4] border border-[#e0e0e0]">
-                  <div className="text-xs text-[#525252] uppercase font-semibold">Bob Coins Saved</div>
-                  <div className="text-2xl font-bold text-[#0f62fe] my-1">
-                    {coinsSaved.toLocaleString()}
+                <div className="panel-2010 p-2.5">
+                  <div className="text-[10px] font-bold text-[#475569] uppercase">Bob PP Burn (33% Gain)</div>
+                  <div className="text-base font-bold font-mono text-[#2e7d32] mt-1">
+                    {ppCoins.toLocaleString()} Coins
                   </div>
-                  <div className="text-[0.65rem] text-[#8d8d8d]">80% Token Reduction</div>
+                  <div className="text-[9.5px] text-[#64748b]">18 coins / app</div>
                 </div>
 
-                <div className="p-4 bg-[#f4f4f4] border border-[#e0e0e0]">
-                  <div className="text-xs text-[#525252] uppercase font-semibold">Cost Equivalent</div>
-                  <div className="text-2xl font-bold text-[#161616] my-1">
-                    ${(dollarSaved / 1000).toFixed(0)}k
+                <div className="panel-2010 p-2.5">
+                  <div className="text-[10px] font-bold text-[#475569] uppercase">Net Token Savings</div>
+                  <div className="text-base font-bold font-mono text-[#0066cc] mt-1">
+                    {coinsSaved.toLocaleString()} Coins
                   </div>
-                  <div className="text-[0.65rem] text-[#8d8d8d]">At $120/hr blended rate</div>
+                  <div className="text-[9.5px] text-[#64748b]">33.3% token reduction</div>
+                </div>
+
+                <div className="panel-2010 p-2.5">
+                  <div className="text-[10px] font-bold text-[#475569] uppercase">Estimated Labor Savings</div>
+                  <div className="text-base font-bold font-mono text-[#0066cc] mt-1">
+                    ${dollarSaved.toLocaleString()}
+                  </div>
+                  <div className="text-[9.5px] text-[#64748b]">{hoursSaved.toFixed(0)} dev hours</div>
                 </div>
               </div>
             </div>
@@ -331,12 +343,16 @@ export function InteractiveTelemetry({ isOpen, onClose }: InteractiveTelemetryPr
         </div>
 
         {/* Modal Footer */}
-        <div className="h-10 bg-[#f4f4f4] border-t border-[#e0e0e0] px-6 flex items-center justify-between text-[0.7rem] font-mono text-[#525252] shrink-0">
-          <span>IBM Systems Verification Testing · Telemetry Demonstration</span>
-          <span>Press [Esc] or [D] to exit</span>
+        <div className="h-9 bg-[#e9ecef] border-t border-[#ced4da] px-4 flex items-center justify-between shrink-0 text-[11px] text-[#495057]">
+          <span>IBM Systems Verification Testing · Internal Engineering Telemetry</span>
+          <button
+            onClick={onClose}
+            className="btn-2010-default px-3 py-0.5 text-[11px]"
+          >
+            Close Window
+          </button>
         </div>
       </div>
     </div>
   );
 }
-

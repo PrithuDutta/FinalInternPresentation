@@ -3,48 +3,47 @@ import { Badge } from '../components/Badge';
 const PILLARS = [
   {
     num: '01',
-    title: 'The Modernization Challenge',
-    tag: 'Problem Space',
+    title: 'Core Migration & 3-Layer Forensics',
+    tag: 'Replatforming',
     variant: 'blue' as const,
     points: [
-      'Enterprises run mission-critical legacy Java 8 workloads on traditional WebSphere (tWAS).',
-      'Migrating to container-native OpenLiberty on Java 25 / Jakarta EE 11 is essential for hybrid cloud agility.',
-      'DayTrader 7 is the ultimate enterprise benchmark: 35k+ LOC spanning EJB 3.2, JMS SIBus, CDI, MDBs, and DB2.',
+      'Upgraded DayTrader 7 (legacy Java EE 7) to WebSphere Liberty on Java 21 / Jakarta 10.',
+      'Traced request lifecycle across 3 architectural layers (servlet, business logic, EJB container).',
+      'Isolated true root cause behind misleading login/messaging exceptions: missing messaging feature in server.xml.',
     ],
   },
   {
     num: '02',
-    title: 'Four Core Workstreams',
-    tag: 'Execution Scope',
+    title: 'AI Modernization Engine & Telemetry',
+    tag: 'Distributed AI',
     variant: 'dark' as const,
     points: [
-      'Established full tWAS 8.5.5 reference environment with Podman DB2 & JMS broker topology.',
-      'Replatformed DayTrader 7 to OpenLiberty 25.0; root-caused CDI/EJB container failures.',
-      'Conducted first empirical 3-way AI migration benchmark (Plain Bob vs Bob PP + AMA).',
-      'Engineered CWWK diagnostic MCP server for WatsonX & Bob AI real-time runtime grounding.',
+      'Architected distributed AI orchestration engine (LangChain, LiteLLM) for autonomous refactoring.',
+      'Designed specific "Senior" (Architectural Planner) and "Junior" (Bob Executor) developer agent modes.',
+      'Engineered deterministic state machine with parallel Docker sandboxes and PostgreSQL telemetry.',
     ],
   },
   {
     num: '03',
-    title: 'Tangible Business Value',
-    tag: 'Enterprise Impact',
+    title: '33% Token Gap & MCP Diagnostics',
+    tag: 'Tooling & Impact',
     variant: 'green' as const,
     points: [
-      'Proved Bob PP delivers 80% token savings & 95% time reduction at enterprise portfolio scale.',
-      'Filed 10+ reproducible defect reports directly against IBM AMA migration toolchain.',
-      'Delivered written PM unit economics evaluation to Bob AI engineering leadership.',
-      'Created open diagnostic tooling that outlasts the internship for SVT automated testing.',
+      'Evaluated enterprise AI migration tools; uncovered 33% token-efficiency gap and presented identical failure modes to leadership.',
+      'Built Python scraper extracting 1,300+ Open Liberty error codes & property configs into SQLite.',
+      'Integrated live MCP server providing sub-second natural language server diagnostics to internal AI assistant.',
     ],
   },
 ];
 
 const METRICS_SUMMARY = [
-  { label: 'APPLICATION REPLATFORMED', value: 'DayTrader 7 (35k+ LOC)' },
-  { label: 'MIGRATION RUNTIME', value: 'Java 8 tWAS -> Java 25 Liberty' },
-  { label: 'AI BENCHMARK SPEEDUP', value: '40 hrs -> 54 min (95% Cut)' },
-  { label: 'TOKEN COST REDUCTION', value: '80% (90 -> 18 Bob Coins)' },
-  { label: 'AMA DEFECTS FILED', value: '10+ GitHub Issues' },
+  { label: 'TARGET RUNTIME', value: 'WebSphere Liberty (Java 21 / Jakarta 10)' },
+  { label: 'CONTAINER FORENSICS', value: '3-Layer Request Lifecycle Traced' },
+  { label: 'AI ENGINE MODES', value: 'Senior & Junior (LangChain/LiteLLM)' },
+  { label: 'TOKEN EFFICIENCY GAP', value: '33% Gap Uncovered (80% Cut)' },
+  { label: 'DIAGNOSTIC MCP SERVER', value: '1,300+ Error Codes in SQLite' },
 ];
+
 
 export function Slide02_ExecutiveSummary() {
   return (

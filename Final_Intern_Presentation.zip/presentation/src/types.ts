@@ -38,7 +38,7 @@ export interface SpeakerNotes {
 export interface SlideDefinition {
   id: string;
   slideNum: number;
-  section: 'Overview' | 'Baseline' | 'Modernization' | 'Benchmark' | 'Tooling' | 'Impact';
+  section: string;
   title: string;
   subtitle: string;
   Component: React.ComponentType;

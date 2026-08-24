@@ -10,12 +10,12 @@ export function Slide06_LibertyRootCause() {
             ACT 2 // HANDS-ON REPLATFORMING · LIBERTY FORENSICS
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-[#161616] tracking-tight font-sans">
-            Workstream 02: Liberty Container Forensics & EJB Root Cause
+            Workstream 02: 3-Layer Request Lifecycle Tracing & EJB Root Cause
           </h2>
         </div>
         <div className="flex items-center gap-2">
-          <Badge label="OpenLiberty 25.0" variant="blue" size="sm" />
-          <Badge label="Approved by Monica ✓" variant="green" size="sm" />
+          <Badge label="WebSphere Liberty (Java 21)" variant="blue" size="sm" />
+          <Badge label="Jakarta EE 10" variant="blue" size="sm" />
         </div>
       </div>
 
@@ -26,24 +26,24 @@ export function Slide06_LibertyRootCause() {
           <div>
             <div className="flex items-center justify-between mb-2 border-b border-[#ff8389]/40 pb-1.5">
               <span className="text-[0.62rem] font-mono font-bold text-[#da1e28] uppercase">
-                ▲ THE MISLEADING SYMPTOM (19 BLIND ITERATIONS)
+                ▲ LAYER 1 & 2: THE MISLEADING SYMPTOM (19 BLIND ATTEMPTS)
               </span>
-              <Badge label="Frontend Crash" variant="red" size="sm" />
+              <Badge label="Login & Messaging Crash" variant="red" size="sm" />
             </div>
 
             <h3 className="text-xs font-bold text-[#161616] mb-2">
-              NullPointerException at tradehome.jsp:47
+              NullPointerException at tradehome.jsp:47 on Login
             </h3>
 
             <div className="p-2.5 bg-white border border-[#ff8389] font-mono text-[0.65rem] text-[#da1e28] space-y-1 mb-3">
               <div>java.lang.NullPointerException</div>
-              <div className="text-[#525252] pl-2">at org.apache.jsp.tradehome_jsp._jspService</div>
+              <div className="text-[#525252] pl-2">at org.apache.jsp.tradehome_jsp._jspService (tradehome.jsp:47)</div>
               <div className="text-[#525252] pl-2">at com.ibm.websphere.samples.daytrader.web.TradeAction.login()</div>
-              <div className="text-[#da1e28] font-bold pl-2">&gt;&gt; TradeSLSBBean was NULL during CDI injection</div>
+              <div className="text-[#da1e28] font-bold pl-2">&gt;&gt; Injected TradeSLSBBean was NULL during CDI proxy execution</div>
             </div>
 
             <p className="text-[0.7rem] text-[#525252] leading-relaxed">
-              Bob AI attempted to rewrite the JSP and Java controllers 19 times without success. It hallucinated null checks because it could not inspect Liberty container lifecycle logs.
+              Standard AI models attempted 19 failed code refactorings on the JSP and Java controllers. The exception trace pointed to the presentation layer, but the code itself was valid.
             </p>
           </div>
         </div>
@@ -53,32 +53,32 @@ export function Slide06_LibertyRootCause() {
           <div>
             <div className="flex items-center justify-between mb-2 border-b border-[#6fdc8c]/40 pb-1.5">
               <span className="text-[0.62rem] font-mono font-bold text-[#198038] uppercase">
-                ▼ THE TRUE ROOT CAUSE & LIBERTY RESOLUTION
+                ▼ LAYER 3: EJB CONTAINER INJECTION & ISOLATED ROOT CAUSE
               </span>
-              <Badge label="Resolved ✓" variant="green" size="sm" />
+              <Badge label="Isolated & Resolved ✓" variant="green" size="sm" />
             </div>
 
             <h3 className="text-xs font-bold text-[#161616] mb-2">
-              Container EJB Lifecycle Aborted by Missing Feature
+              Missing Messaging Feature in Server Configuration
             </h3>
 
             <ul className="space-y-2 text-[0.7rem] text-[#161616]">
               <li className="flex items-start gap-2">
                 <span className="text-[#198038] font-bold font-mono">1.</span>
                 <span>
-                  <strong>Missing messagingClient-3.0:</strong> Liberty could not resolve JMS connection factory resources injected into <code className="text-[#0f62fe] font-mono">TradeSLSBBean</code>, causing CDI to abort bean initialization.
+                  <strong>Missing Messaging Feature:</strong> The EJB container aborted bean instantiation because <code className="text-[#0f62fe] font-mono">&lt;feature&gt;messagingClient-3.0&lt;/feature&gt;</code> was omitted in <code className="text-[#0f62fe] font-mono">server.xml</code>, preventing JMS ConnectionFactory injection.
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#198038] font-bold font-mono">2.</span>
                 <span>
-                  <strong>CNTR0154E Remote Collision:</strong> Stripped duplicate remote/local interface annotations injected by automated LLM tools.
+                  <strong>CNTR0154E Remote Conflict:</strong> Separated duplicate <code className="text-[#0f62fe] font-mono">@Remote</code> and <code className="text-[#0f62fe] font-mono">@Local</code> interface declarations on <code className="text-[#0f62fe] font-mono">TradeSLSBBean</code>.
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#198038] font-bold font-mono">3.</span>
                 <span>
-                  <strong>Driver Binding:</strong> Copied <code className="text-[#0f62fe] font-mono">db2jcc4.jar</code> into Liberty <code className="text-[#0f62fe] font-mono">lib/</code> directory and removed spurious <code className="text-[#da1e28] font-mono">appSecurity-5.0</code>.
+                  <strong>DB2 Shared Lib:</strong> Bound <code className="text-[#0f62fe] font-mono">db2jcc4.jar</code> in Liberty shared library and verified full order execution on Java 21 / Jakarta 10.
                 </span>
               </li>
             </ul>
@@ -91,14 +91,14 @@ export function Slide06_LibertyRootCause() {
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 bg-[#198038]" />
           <span className="text-[#161616] font-semibold">
-            OpenLiberty Replatforming Fully Verified: All DT7 trading operations active on Java 25
+            Replatforming Verified: Request lifecycle traced across all 3 layers; full trading active on Java 21
           </span>
         </div>
         <div className="text-[#198038] font-bold">
-          DEPLOYMENT APPROVED BY MONICA ✓
         </div>
       </div>
     </div>
   );
 }
+
 

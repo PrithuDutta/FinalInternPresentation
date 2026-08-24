@@ -2,28 +2,28 @@ import { Badge } from '../components/Badge';
 
 const AGENTS = [
   {
-    role: '1. AMA Discovery Agent',
-    tech: 'Static AST Analysis',
-    task: 'Parses legacy Java EE codebase, extracts EJB/JMS dependency graphs, and generates execution DAG.',
-    badge: 'Planner',
+    role: '1. Senior Developer Agent',
+    tech: 'LangChain · Architectural Planner',
+    task: 'Performs static AST discovery, constructs dependency migration DAG, and formulates high-level refactoring plan.',
+    badge: 'Senior Mode',
   },
   {
-    role: '2. Bob Execution Agent',
-    tech: 'Code Refactoring Subagent',
-    task: 'Applies targeted Java 25 & Jakarta EE transformations, edits pom.xml, and synthesizes server.xml.',
-    badge: 'Executor',
+    role: '2. Junior Developer Agent (Bob)',
+    tech: 'LiteLLM · Code Execution Subagent',
+    task: 'Executes targeted Java 21 / Jakarta 10 code rewrites, updates pom.xml dependencies, and adjusts server.xml configuration.',
+    badge: 'Junior Mode',
   },
   {
-    role: '3. Liberty Runtime Agent',
-    tech: 'Container Execution Engine',
-    task: 'Deploys application to OpenLiberty test container, captures messages.log, and verifies HTTP endpoints.',
-    badge: 'Tester',
+    role: '3. Docker Sandbox Engine',
+    tech: 'Parallel Container Sandboxes',
+    task: 'Deploys application into isolated Open Liberty container, verifies HTTP health endpoints, and checks messages.log.',
+    badge: 'Closed-Loop Test',
   },
   {
-    role: '4. MCP Evaluator Agent',
-    tech: 'LiteLLM + CWWK MCP Server',
-    task: 'Extracts runtime stack traces, queries CWWK MCP server for remediations, and drives autonomous feedback loop.',
-    badge: 'Evaluator',
+    role: '4. PostgreSQL Telemetry & MCP',
+    tech: 'Postgres · CWWK MCP Feedback',
+    task: 'Logs state transitions and token economics; queries MCP server on runtime failure to drive autonomous self-healing loops.',
+    badge: 'Telemetry & Fix',
   },
 ];
 
@@ -34,16 +34,16 @@ export function Slide10_MultiAgentPipeline() {
       <div className="flex items-center justify-between border-b border-[#e0e0e0] pb-3">
         <div>
           <div className="text-[0.62rem] font-mono font-bold tracking-[2px] uppercase text-[#0f62fe]">
-            ACT 4 // INNOVATION & TOOLING · MULTI-AGENT ARCHITECTURE
+            ACT 4 // INNOVATION & TOOLING · DISTRIBUTED ENGINE
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-[#161616] tracking-tight font-sans">
-            Workstream 05: Multi-Agent Modernization Pipeline
+            Workstream 05: Distributed AI Orchestration Engine (Bob)
           </h2>
         </div>
         <div className="flex items-center gap-2">
-          <Badge label="LangChain" variant="blue" size="sm" />
-          <Badge label="LiteLLM" variant="dark" size="sm" />
-          <Badge label="In Collaboration with Dan" variant="outline" size="sm" />
+          <Badge label="LangChain · LiteLLM" variant="blue" size="sm" />
+          <Badge label="Senior & Junior Modes" variant="dark" size="sm" />
+          <Badge label="Docker & PostgreSQL" variant="blue" size="sm" />
         </div>
       </div>
 
@@ -57,7 +57,7 @@ export function Slide10_MultiAgentPipeline() {
             <div>
               <div className="flex items-center justify-between mb-2 border-b border-[#e0e0e0] pb-1.5">
                 <span className="text-[0.62rem] font-mono font-bold text-[#0f62fe]">
-                  AGENT 0{idx + 1}
+                  MODULE 0{idx + 1}
                 </span>
                 <Badge label={a.badge} variant="blue" size="sm" />
               </div>
@@ -67,7 +67,7 @@ export function Slide10_MultiAgentPipeline() {
             </div>
 
             <div className="mt-3 pt-2 border-t border-[#e0e0e0] text-[0.58rem] font-mono text-[#525252] text-center">
-              {idx < 3 ? 'AUTOMATIC HANDOFF ──►' : 'AUTONOMOUS VERIFIED ✓'}
+              {idx < 3 ? 'AUTOMATIC HANDOFF ──►' : 'CLOSED-LOOP VERIFIED ✓'}
             </div>
           </div>
         ))}
@@ -78,14 +78,15 @@ export function Slide10_MultiAgentPipeline() {
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 bg-[#0f62fe]" />
           <span className="text-[#161616] font-semibold">
-            LiteLLM Router manages model fallback; CWWK MCP server grounds agent self-healing loops
+            Senior mode plans; Junior mode refactors; parallel Docker sandboxes execute closed-loop verification; PostgreSQL records telemetry
           </span>
         </div>
         <div className="text-[#525252] text-[0.65rem] hidden md:block">
-          SVT AUTOMATION ARCHITECTURE
+          SVT DISTRIBUTED AI ARCHITECTURE
         </div>
       </div>
     </div>
   );
 }
+
 

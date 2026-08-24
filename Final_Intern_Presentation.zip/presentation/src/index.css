@@ -1,42 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  /* IBM Corporate Official Light Palette */
-  --ibm-blue-60: #0f62fe;
-  --ibm-blue-70: #0043ce;
-  --ibm-blue-80: #002d9c;
-  --ibm-blue-10: #edf5ff;
-  --ibm-blue-20: #d0e2ff;
-  --ibm-blue-30: #a6c8ff;
-  
-  --ibm-gray-100: #161616;
-  --ibm-gray-90:  #262626;
-  --ibm-gray-80:  #393939;
-  --ibm-gray-70:  #525252;
-  --ibm-gray-60:  #6f6f6f;
-  --ibm-gray-50:  #8d8d8d;
-  --ibm-gray-30:  #e0e0e0;
-  --ibm-gray-20:  #ececec;
-  --ibm-gray-10:  #f4f4f4;
-  --ibm-white:    #ffffff;
-
-  --ibm-green-60: #198038;
-  --ibm-green-10: #defbe6;
-  --ibm-green-30: #6fdc8c;
-
-  --ibm-red-60:   #da1e28;
-  --ibm-red-10:   #fff1f1;
-  --ibm-red-30:   #ff8389;
-
-  --ibm-yellow-30: #f1c21b;
-  --ibm-yellow-10: #fdf4d6;
+  --primary-blue: #0066cc;
+  --dark-blue: #003366;
+  --link-blue: #005580;
+  --bg-app: #e4e7ea;
+  --text-main: #222222;
+  --text-muted: #666666;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  border-radius: 0px !important; /* Strict sharp geometry requested */
 }
 
 html,
@@ -44,71 +20,346 @@ body,
 #root {
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, "Helvetica Neue", Helvetica, "Segoe UI", sans-serif;
+  background-color: #d8dde2;
+  color: #222222;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   PRIME 2010s ENTERPRISE DESIGN SYSTEM (IBM developerWorks / WebSphere / Bootstrap 2.3)
+   ========================================================================== */
+
+/* 2010s Top Enterprise Navbar */
+.navbar-2010 {
+  background: linear-gradient(to bottom, #2c3848 0%, #1a222d 100%);
+  border-bottom: 1px solid #11161d;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 5px rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+}
+
+/* 2010s Breadcrumb Bar */
+.breadcrumb-2010 {
+  background: linear-gradient(to bottom, #f9fafb 0%, #eef0f3 100%);
+  border-bottom: 1px solid #d1d5db;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* 2010s Status Bar */
+.statusbar-2010 {
+  background: linear-gradient(to bottom, #f2f4f7 0%, #e2e6eb 100%);
+  border-top: 1px solid #c4cbd4;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 11px;
+  color: #4a5568;
+}
+
+/* 2010s Buttons (Skeuomorphic & Beveled Gradients) */
+.btn-2010-default {
+  background: linear-gradient(to bottom, #ffffff 0%, #e6e9ed 100%);
+  border: 1px solid #b8c0cc;
+  border-bottom-color: #a2abb8;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 #ffffff, 0 1px 2px rgba(0, 0, 0, 0.08);
+  color: #333333;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+.btn-2010-default:hover {
+  background: linear-gradient(to bottom, #ffffff 0%, #dce1e7 100%);
+  border-color: #9aa4b3;
+  color: #111111;
+}
+.btn-2010-default:active,
+.btn-2010-default.active {
+  background: #d8dde3;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.btn-2010-primary {
+  background: linear-gradient(to bottom, #0077cc 0%, #005599 100%);
+  border: 1px solid #004480;
+  border-bottom-color: #003366;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+.btn-2010-primary:hover {
+  background: linear-gradient(to bottom, #0088ee 0%, #0066bb 100%);
+  border-color: #003b70;
+}
+.btn-2010-primary:active,
+.btn-2010-primary.active {
+  background: #004f8c;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+/* 2010s Panels */
+.panel-2010 {
+  background: #ffffff;
+  border: 1px solid #c9cfd8;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.panel-2010-heading {
+  background: linear-gradient(to bottom, #fcfcfc 0%, #eef0f3 100%);
+  border-bottom: 1px solid #c9cfd8;
+  box-shadow: inset 0 1px 0 #ffffff;
+  padding: 6px 12px;
+  font-weight: bold;
+  font-size: 11.5px;
+  color: #2b333e;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+.panel-2010-heading-blue {
+  background: linear-gradient(to bottom, #2b6cb0 0%, #1a4971 100%);
+  border-bottom: 1px solid #133654;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  padding: 6px 12px;
+  font-weight: bold;
+  font-size: 11.5px;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.panel-2010-body {
+  padding: 10px 14px;
+}
+
+/* 2010s Slide Canvas Surface */
+.slide-surface {
   width: 100%;
   height: 100%;
+  background: #ffffff;
+  border: 1px solid #b8c0cc;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0 1px 0 #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 32px;
   overflow: hidden;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #e8e8e8;
-  color: #161616;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
-/* IBM Plex Typography */
-.font-mono {
-  font-family: "IBM Plex Mono", Consolas, "Courier New", monospace;
+.slide-surface h2 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: bold;
+  color: #1a2533;
+  font-size: 20px;
+  margin: 0;
+  letter-spacing: -0.2px;
+  text-shadow: 0 1px 0 #ffffff;
 }
 
-.font-sans {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+.slide-surface h3 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: bold;
+  color: #2d3748;
+  font-size: 13.5px;
+  margin: 0;
 }
 
-/* IBM 8-Bar Corporate Stripe Accent */
+/* 2010s Tables */
+.table-2010 {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #c2c9d4;
+  border-radius: 3px;
+  background: #ffffff;
+  font-size: 11.5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.table-2010 th {
+  background: linear-gradient(to bottom, #fafbfc 0%, #e9edf2 100%);
+  border-bottom: 2px solid #b8c0cc;
+  border-right: 1px solid #d4dae2;
+  padding: 6px 10px;
+  font-weight: bold;
+  color: #334155;
+  text-transform: uppercase;
+  font-size: 10px;
+  text-shadow: 0 1px 0 #ffffff;
+}
+.table-2010 th:last-child {
+  border-right: none;
+}
+
+.table-2010 td {
+  border-bottom: 1px solid #e2e6ec;
+  border-right: 1px solid #e2e6ec;
+  padding: 6px 10px;
+  color: #222222;
+}
+.table-2010 td:last-child {
+  border-right: none;
+}
+
+.table-2010 tr:nth-child(even) td {
+  background-color: #f7f9fb;
+}
+
+.table-2010 tr:hover td {
+  background-color: #edf4fb;
+}
+
+/* 2010s Callouts (Alerts) */
+.callout-2010-info {
+  background: linear-gradient(to bottom, #eaf4fd 0%, #d8ecf8 100%);
+  border: 1px solid #bce8f1;
+  border-left: 4px solid #3a87ad;
+  border-radius: 3px;
+  padding: 8px 12px;
+  color: #31708f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.callout-2010-success {
+  background: linear-gradient(to bottom, #edf9ee 0%, #dff0d8 100%);
+  border: 1px solid #d6e9c6;
+  border-left: 4px solid #468847;
+  border-radius: 3px;
+  padding: 8px 12px;
+  color: #3c763d;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.callout-2010-error {
+  background: linear-gradient(to bottom, #fdeeee 0%, #f2dede 100%);
+  border: 1px solid #ebccd1;
+  border-left: 4px solid #b94a48;
+  border-radius: 3px;
+  padding: 8px 12px;
+  color: #a94442;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* 2010s Badges */
+.badge-2010 {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 9.5px;
+  font-weight: bold;
+  line-height: 14px;
+  color: #ffffff;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.35);
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.badge-2010-blue {
+  background: linear-gradient(to bottom, #0088cc 0%, #005599 100%);
+}
+
+.badge-2010-green {
+  background: linear-gradient(to bottom, #5bb75b 0%, #389838 100%);
+}
+
+.badge-2010-red {
+  background: linear-gradient(to bottom, #ee5f5b 0%, #bd362f 100%);
+}
+
+.badge-2010-dark {
+  background: linear-gradient(to bottom, #495057 0%, #212529 100%);
+}
+
+.badge-2010-gray {
+  background: linear-gradient(to bottom, #9e9e9e 0%, #757575 100%);
+}
+
+.badge-2010-outline {
+  background: linear-gradient(to bottom, #ffffff 0%, #f0f2f5 100%);
+  color: #334155;
+  text-shadow: 0 1px 0 #ffffff;
+  border: 1px solid #b8c0cc;
+}
+
+/* 2010s Code / Terminal Boxes */
+.code-box-2010 {
+  background: #fdfdfd;
+  border: 1px solid #cbd2dc;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-family: Consolas, "Lucida Console", "Courier New", monospace;
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: #1f2937;
+  padding: 8px 10px;
+  overflow-x: auto;
+}
+
+/* IBM 8-Bar Minimal Logo */
 .ibm-stripes {
   background: repeating-linear-gradient(
     to bottom,
-    #0f62fe,
-    #0f62fe 2px,
+    #0066cc,
+    #0066cc 2px,
     transparent 2px,
     transparent 4px
   );
 }
 
-.ibm-stripes-dark {
-  background: repeating-linear-gradient(
-    to bottom,
-    #161616,
-    #161616 2px,
-    transparent 2px,
-    transparent 4px
-  );
+/* Reveal.js Stage Positioning */
+.reveal-viewport {
+  background: #232a35 !important;
 }
 
-/* Custom Clean Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f4f4f4;
-}
-::-webkit-scrollbar-thumb {
-  background: #c6c6c6;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #0f62fe;
+.reveal {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  color: #222222 !important;
+  font-size: 16px !important;
 }
 
-/* Slide Container Aspect Ratio Handling */
-.slide-canvas {
-  aspect-ratio: 16 / 9;
-  max-width: calc((100vh - 110px) * 16 / 9);
-  max-height: calc(100vh - 110px);
+.reveal .slides {
+  text-align: left !important;
 }
 
-@media (max-aspect-ratio: 16/9) {
-  .slide-canvas {
-    max-width: calc(100vw - 32px);
-    max-height: calc((100vw - 32px) * 9 / 16);
-  }
+.reveal .slides section {
+  padding: 0 !important;
+  height: 100% !important;
+  top: 0 !important;
 }
 
+.reveal .progress {
+  height: 4px !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  color: #0077cc !important;
+}
 
+.reveal .controls {
+  color: #0077cc !important;
+}
+
+.reveal .slide-number {
+  font-family: "Segoe UI", Arial, sans-serif !important;
+  font-size: 11px !important;
+  color: #ffffff !important;
+  background: rgba(26, 34, 45, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 3px !important;
+  padding: 2px 6px !important;
+  bottom: 8px !important;
+  right: 8px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}

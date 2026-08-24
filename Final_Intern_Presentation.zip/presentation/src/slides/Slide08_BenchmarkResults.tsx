@@ -26,11 +26,11 @@ export function Slide08_BenchmarkResults() {
             ACT 3 // EMPIRICAL BENCHMARK · RESULTS
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-[#161616] tracking-tight font-sans">
-            Workstream 03: Benchmark Findings & Unit Economics
+            Workstream 03: 33% Token Gap & Leadership Findings
           </h2>
         </div>
         <div className="text-[0.65rem] font-mono text-[#525252] hidden sm:block">
-          DELIVERED TO BOB PM TEAM
+          PRESENTED TO BOB LEADERSHIP & PMs
         </div>
       </div>
 
@@ -40,9 +40,9 @@ export function Slide08_BenchmarkResults() {
           <thead>
             <tr className="border-b border-[#e0e0e0] bg-[#f4f4f4] font-mono text-[0.65rem] uppercase text-[#525252]">
               <th className="p-2.5 w-[25%] border-r border-[#e0e0e0]">Metric / Dimension</th>
-              <th className="p-2.5 w-[25%] border-r border-[#e0e0e0] text-[#da1e28]">Plain Bob (Blind)</th>
-              <th className="p-2.5 w-[25%] border-r border-[#e0e0e0] text-[#0f62fe] font-bold">Bob PP + AMA (Guided)</th>
-              <th className="p-2.5 w-[25%] text-[#198038]">Plain Bob (Informed)</th>
+              <th className="p-2.5 w-[25%] border-r border-[#e0e0e0] text-[#da1e28]">Plain Unassisted AI</th>
+              <th className="p-2.5 w-[25%] border-r border-[#e0e0e0] text-[#0f62fe] font-bold">Enterprise AI Package</th>
+              <th className="p-2.5 w-[25%] text-[#198038]">Context-Informed AI</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[#e0e0e0]">
@@ -70,11 +70,12 @@ export function Slide08_BenchmarkResults() {
       <div className="p-3 bg-[#edf5ff] border border-[#a6c8ff] flex items-start gap-3">
         <div className="w-1.5 h-8 bg-[#0f62fe] shrink-0 mt-0.5" />
         <div className="text-[0.72rem] text-[#161616] leading-relaxed font-normal">
-          <strong className="text-[#0f62fe] font-semibold">Key Finding Delivered to PMs: </strong>
-          Both Plain Bob and Bob PP share the exact same underlying LLM and exhibit identical model hallucinations (e.g. injecting DerbyDB). Bob PP's 80% cost reduction and 95% time reduction stem entirely from workflow orchestration, AST decomposition, and automated Git checkpoints.
+          <strong className="text-[#0f62fe] font-semibold">Key Finding Presented to Leadership: </strong>
+          Evaluated two enterprise AI tools and uncovered a <strong className="text-[#198038]">33% token-efficiency gap</strong>. Crucially, both tools share identical underlying LLM failure modes (hallucinating DerbyDB and dead security XML). The efficiency gap and 95% speedup stem entirely from deterministic state machines, AST decomposition, and closed-loop Docker testing.
         </div>
       </div>
     </div>
   );
 }
+
 

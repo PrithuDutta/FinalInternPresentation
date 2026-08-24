@@ -67,7 +67,7 @@ export function Slide12_RetrospectiveQnA() {
       <div className="p-3.5 bg-[#edf5ff] border border-[#a6c8ff] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
         <div>
           <div className="font-bold text-[#161616] mb-0.5">
-            Special thanks to mentors Monica & Dan and the IBM SVT team!
+            Special thanks to mentors Monica, Dan, Brian, Jag and the IBM SVT team!
           </div>
           <div className="text-[0.68rem] text-[#525252] font-mono">
             Press [D] for Diagnostic Telemetry & Schematics · Press [P] for Speaker Prompter

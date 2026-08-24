@@ -4,7 +4,7 @@ const DOSSIER = [
   { label: 'SVT INTERN TEAM', value: 'Prithu Dutta, Alan Yuen, Mars Huang' },
   { label: 'ORGANIZATION', value: 'IBM Systems Verification Testing (SVT)' },
   { label: 'MENTORS', value: 'Monica, Dan, Brian, Jag' },
-  { label: 'TARGET RUNTIME', value: 'WebSphere Liberty (Java 21 · Jakarta 11)' },
+  { label: 'TARGET RUNTIME', value: 'WebSphere Liberty (Jakarta EE 11)' },
   { label: 'SOURCE BASELINE', value: 'DayTrader 7 (Java EE 7 on tWAS)' },
   { label: 'DURATION', value: '12 Weeks · Summer 2025' },
 ];
@@ -19,18 +19,18 @@ const STACK_BADGES = [
   'IBM DB2',
 ];
 
-export function Slide01_Title() {
+export function Slide00_Title() {
   return (
-    <div className="w-full h-full bg-white p-8 sm:p-12 flex flex-col justify-between select-none">
+    <div className="slide-surface select-none">
       {/* Top Corporate Header */}
-      <div className="flex items-center justify-between border-b border-[#e0e0e0] pb-4">
+      <div className="flex items-center justify-between border-b border-[#cbd5e1] pb-2.5">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-4 ibm-stripes" />
+          <div className="w-8 h-4 ibm-stripes shadow-xs" />
           <div>
-            <div className="text-[0.65rem] font-mono font-bold tracking-[2px] uppercase text-[#0f62fe]">
+            <div className="text-[11px] font-mono font-bold tracking-[2px] uppercase text-[#0066cc]">
               IBM SYSTEMS VERIFICATION TESTING · FINAL PRESENTATION
             </div>
-            <div className="text-[0.58rem] font-mono text-[#525252]">
+            <div className="text-[10px] font-mono text-[#64748b]">
               DOCUMENT ID: SVT-MOD-2025-FINAL // CLASSIFICATION: IBM INTERNAL
             </div>
           </div>
@@ -44,33 +44,33 @@ export function Slide01_Title() {
       </div>
 
       {/* Main Title Content */}
-      <div className="my-auto max-w-4xl py-6 space-y-4">
-        <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#edf5ff] border border-[#a6c8ff]">
-          <span className="w-1.5 h-1.5 bg-[#0f62fe]" />
-          <span className="text-[0.65rem] font-mono font-bold text-[#0f62fe] tracking-wider uppercase">
-            ENTERPRISE APPLICATION MODERNIZATION & AI TOOLING
+      <div className="my-auto max-w-4xl py-3 space-y-3">
+        <div className="callout-2010-info inline-flex items-center gap-2 py-1 px-3">
+          <span className="w-2 h-2 rounded-full bg-[#0066cc]" />
+          <span className="text-[11px] font-mono font-bold text-[#004480] tracking-wider uppercase">
+            ENTERPRISE APPLICATION MODERNIZATION &amp; AI TOOLING
           </span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#161616] leading-tight font-sans">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1e293b] leading-tight font-sans">
           Replatforming Legacy Java EE 7
           <br />
-          <span className="text-[#0f62fe]">to WebSphere Liberty</span> with AI Tooling
+          <span className="text-[#0066cc]">to WebSphere Liberty</span> with AI Tooling
         </h1>
 
-        <p className="text-sm sm:text-base text-[#525252] leading-relaxed max-w-3xl font-normal">
+        <p className="text-sm text-[#475569] leading-relaxed max-w-3xl font-normal">
           Upgrading DayTrader 7 to WebSphere Liberty (Jakarta EE 11) — 3-tier EJB container forensics, auditing IBM AI toolchains (33% token-cost reduction), building a 1,300+ error code MCP diagnostic server, and architecting an autonomous multi-agent modernization engine.
         </p>
       </div>
 
       {/* Bottom Dossier Grid */}
-      <div className="pt-4 border-t border-[#e0e0e0] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+      <div className="pt-2.5 border-t border-[#cbd5e1] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
         {DOSSIER.map(item => (
-          <div key={item.label} className="p-3 bg-[#f4f4f4] border border-[#e0e0e0]">
-            <div className="text-[0.58rem] font-mono font-bold text-[#0f62fe] tracking-wider uppercase mb-1">
+          <div key={item.label} className="p-2 bg-[#f8fafc] border border-[#cbd5e1] rounded-[3px] shadow-xs">
+            <div className="text-[9px] font-mono font-bold text-[#0066cc] tracking-wider uppercase mb-0.5">
               {item.label}
             </div>
-            <div className="text-[0.72rem] font-semibold text-[#161616] truncate" title={item.value}>
+            <div className="text-[11px] font-semibold text-[#1e293b] truncate" title={item.value}>
               {item.value}
             </div>
           </div>

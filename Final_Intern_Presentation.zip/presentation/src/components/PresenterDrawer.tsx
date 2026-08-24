@@ -49,99 +49,96 @@ export function PresenterDrawer({
   const isSlideOvertime = slideElapsed > notes.targetSeconds;
 
   return (
-    <aside className="fixed top-11 right-0 bottom-12 w-96 max-w-[90vw] bg-white border-l border-[#e0e0e0] shadow-lg z-40 flex flex-col select-text">
-      {/* Drawer Header */}
-      <div className="p-4 border-b border-[#e0e0e0] bg-[#f4f4f4] flex items-center justify-between">
+    <aside className="fixed top-16 right-0 bottom-7 w-96 max-w-[90vw] bg-[#f7f9fa] border-l border-[#c4cbd4] shadow-2xl z-50 flex flex-col select-text font-sans">
+      {/* Drawer Header (2010s Blue Gloss Panel Heading) */}
+      <div className="panel-2010-heading-blue flex items-center justify-between py-2 px-3">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="text-[0.65rem] font-mono font-bold uppercase tracking-wider text-[#0f62fe]">
-              SPEAKER PROMPTER
-            </span>
-            <span className="text-[#8d8d8d] text-[0.65rem] font-mono">
-              SLIDE {slideNum} OF {totalSlides}
-            </span>
+          <div className="text-[10px] font-mono tracking-wider uppercase opacity-90">
+            SPEAKER PROMPTER &amp; SCRIPT // SLIDE {slideNum} OF {totalSlides}
           </div>
-          <h3 className="text-[0.85rem] font-bold text-[#161616] truncate max-w-[220px]">
+          <h3 className="text-[13px] font-bold text-white truncate max-w-[240px] drop-shadow-sm">
             {slideTitle}
           </h3>
         </div>
         <button
           onClick={onClose}
-          className="p-1 text-[#525252] hover:text-[#161616] hover:bg-[#e0e0e0] text-xs font-mono"
+          className="btn-2010-default px-2 py-0.5 text-[11px] font-bold text-[#111111]"
         >
-          ✕ [Esc]
+          ✕ Close
         </button>
       </div>
 
       {/* Timer & Pacing Telemetry Panel */}
-      <div className="px-4 py-3 bg-white border-b border-[#e0e0e0] grid grid-cols-2 gap-3 text-center font-mono">
-        <div className="p-2 bg-[#f4f4f4] border border-[#e0e0e0]">
-          <div className="text-[0.6rem] text-[#525252] uppercase font-semibold">Slide Time</div>
+      <div className="px-3 py-2 bg-[#ffffff] border-b border-[#d8dde4] grid grid-cols-2 gap-2 text-center font-mono">
+        <div className="p-1.5 bg-[#f4f7fa] border border-[#d0d7e2] rounded-[3px]">
+          <div className="text-[9.5px] text-[#4b5563] uppercase font-bold">Slide Time</div>
           <div
-            className={`text-base font-bold ${
-              isSlideOvertime ? 'text-[#da1e28]' : 'text-[#198038]'
+            className={`text-sm font-bold ${
+              isSlideOvertime ? 'text-[#c62828]' : 'text-[#2e7d32]'
             }`}
           >
             {formatMinSec(slideElapsed)}
           </div>
-          <div className="text-[0.58rem] text-[#8d8d8d]">Target: {notes.timingTarget}</div>
+          <div className="text-[9px] text-[#6b7280]">Target: {notes.timingTarget}</div>
         </div>
 
-        <div className="p-2 bg-[#f4f4f4] border border-[#e0e0e0]">
-          <div className="text-[0.6rem] text-[#525252] uppercase font-semibold">Deck Total Time</div>
-          <div className="text-base font-bold text-[#161616]">
+        <div className="p-1.5 bg-[#f4f7fa] border border-[#d0d7e2] rounded-[3px]">
+          <div className="text-[9.5px] text-[#4b5563] uppercase font-bold">Deck Total Time</div>
+          <div className="text-sm font-bold text-[#1e293b]">
             {formatMinSec(elapsedSeconds)}
           </div>
-          <div className="text-[0.58rem] text-[#8d8d8d]">Goal: 15–20 min</div>
+          <div className="text-[9px] text-[#6b7280]">Goal: 15–20 min</div>
         </div>
       </div>
 
       {/* Scrollable Speaker Track & Notes */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 text-sm leading-relaxed bg-[#ffffff]">
-        {/* Core Takeaway */}
-        <div className="p-3 bg-[#edf5ff] border border-[#a6c8ff]">
-          <div className="text-[0.62rem] font-mono font-bold text-[#0f62fe] uppercase mb-1">
+      <div className="flex-1 overflow-y-auto p-3.5 space-y-3 text-[12px] leading-relaxed bg-[#fbfcfd]">
+        {/* Core Takeaway Alert */}
+        <div className="callout-2010-info">
+          <div className="text-[10px] font-bold text-[#3a87ad] uppercase mb-0.5">
             KEY TAKEAWAY
           </div>
-          <p className="text-[0.75rem] text-[#161616] font-medium">{notes.keyTakeaway}</p>
+          <p className="text-[11.5px] text-[#1e293b] font-medium leading-normal">{notes.keyTakeaway}</p>
         </div>
 
-        {/* Talking Points */}
-        <div>
-          <div className="text-[0.65rem] font-mono font-bold text-[#525252] uppercase tracking-wider mb-2">
-            TALKING SCRIPT & POINTS
+        {/* Talking Points List */}
+        <div className="panel-2010">
+          <div className="panel-2010-heading">
+            SPEAKER TALKING SCRIPT
           </div>
-          <ul className="space-y-2.5">
+          <div className="panel-2010-body space-y-2">
             {notes.talkingPoints.map((point, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-[0.75rem] text-[#161616]">
-                <span className="text-[#0f62fe] font-bold shrink-0 mt-0.5 font-mono">
+              <div key={idx} className="flex items-start gap-1.5 text-[11px] text-[#222222]">
+                <span className="font-bold text-[#0066cc] font-mono shrink-0 mt-0.5">
                   {idx + 1}.
                 </span>
                 <span>{point}</span>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
 
         {/* Transition Cue */}
-        <div className="p-3 bg-[#fdf4d6] border border-[#f1c21b]">
-          <div className="text-[0.62rem] font-mono font-bold text-[#8c6c00] uppercase mb-1">
-            TRANSITION CUE
-          </div>
-          <p className="text-[0.72rem] text-[#161616] italic">"{notes.transitionCue}"</p>
+        <div className="callout-2010-success text-[11px]">
+          <span className="font-bold">Transition Cue: </span>
+          <span className="italic">"{notes.transitionCue}"</span>
         </div>
 
         {/* Anticipated Q&A */}
-        {notes.anticipatedQuestions.length > 0 && (
-          <div>
-            <div className="text-[0.65rem] font-mono font-bold text-[#525252] uppercase tracking-wider mb-2">
-              ANTICIPATED AUDIENCE Q&A
+        {notes.anticipatedQuestions && notes.anticipatedQuestions.length > 0 && (
+          <div className="panel-2010">
+            <div className="panel-2010-heading">
+              ANTICIPATED AUDIENCE Q&amp;A
             </div>
-            <div className="space-y-2">
-              {notes.anticipatedQuestions.map((qa, i) => (
-                <div key={i} className="p-2.5 bg-[#f4f4f4] border border-[#e0e0e0] text-[0.72rem]">
-                  <div className="font-bold text-[#0f62fe] mb-1">Q: {qa.q}</div>
-                  <div className="text-[#525252]">A: {qa.a}</div>
+            <div className="panel-2010-body space-y-2 text-[11px]">
+              {notes.anticipatedQuestions.map((qa, idx) => (
+                <div key={idx} className="p-2 bg-[#f8fafc] border border-[#e2e8f0] rounded-[2px] space-y-1">
+                  <div className="font-bold text-[#004480]">
+                    Q: {qa.q}
+                  </div>
+                  <div className="text-[#334155]">
+                    <span className="font-semibold text-[#2e7d32]">A:</span> {qa.a}
+                  </div>
                 </div>
               ))}
             </div>
@@ -150,16 +147,17 @@ export function PresenterDrawer({
       </div>
 
       {/* Drawer Footer Controls */}
-      <div className="p-3 border-t border-[#e0e0e0] bg-[#f4f4f4] flex items-center justify-between">
+      <div className="p-2 bg-[#edf1f5] border-t border-[#d0d7e2] flex items-center justify-between text-[11px]">
         <button
           onClick={onResetTimer}
-          className="px-2.5 py-1 bg-white hover:bg-[#e0e0e0] border border-[#c6c6c6] text-[#161616] text-[0.65rem] font-mono"
+          className="btn-2010-default px-2 py-0.5 text-[10.5px]"
         >
           Reset Master Clock
         </button>
-        <span className="text-[0.6rem] font-mono text-[#8d8d8d]">Toggle with [P] key</span>
+        <span className="text-[10px] text-[#6b7280]">
+          Keyboard: [P] Toggle Prompter
+        </span>
       </div>
     </aside>
   );
 }
-
